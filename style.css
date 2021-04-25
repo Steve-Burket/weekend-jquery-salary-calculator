@@ -41,11 +41,12 @@ td, th {
   border: 1px solid black;
 }
 
-/* #add-employee {
+/* remove employee button */
+#employee-list, .removeEmployee{
   border: 1px solid black;
   background-color: grey;
   color: black;
-} */
+}
 
 button {
   padding: 3px;

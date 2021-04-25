@@ -10,15 +10,14 @@
 
 // make an array to hold employee info
 const employeeInfo = [
-    {
-    firstName: '',
-    lastName: '',
-    id: '',
-    title: '',
-    annSal: ''
-    }
+  {
+    firstName: "",
+    lastName: "",
+    id: "",
+    title: "",
+    annSal: "",
+  },
 ];
-
 
 function readyNow() {
   console.log("jQ");
@@ -33,11 +32,9 @@ function readyNow() {
     // call addEmployee function to append employee to the DOM
     addEmployee(firstName, lastName, id, title, annSal);
   });
-  
 
   // clear the values before populating to table
   $("#employee-list").empty();
-
 
   for (let i = 0; i < employeeInfo.length; i++) {
     // call addEmployee funtion for every employee
@@ -51,19 +48,19 @@ function readyNow() {
     );
   }
 
-  $('#employee-list').on('click', function (event) {
-    let removeEmployee = $(event.target);
-    removeEmployee.closest('tr').remove();
+  // create remove employee buttong upon addEmployee firing
+  $("#employee-list").on("click", ".removeEmployee", function (event) {
+    let removeEmployeeBtn = $(event.target);
+    removeEmployeeBtn.closest("tr").remove();
   });
-};
+}
 
 // create function to add employees to employee info
 function addEmployee(firstName, lastName, id, title, annSal) {
-
-    $("#employee-list").append(`
+  $("#employee-list").append(`
     <table>
         <tbody>
-          <tr>
+            <tr>
             <th>First Name</th>
             <th>Last Name</th>
             <th>ID</th>
@@ -76,24 +73,21 @@ function addEmployee(firstName, lastName, id, title, annSal) {
             <td>${id}</td>
             <td>${title}</td>
             <td>${annSal}</td>
+            <td colspan='2'>
+            <button class="removeEmployee">Remove</button>
+            </td>
           </tr>
-          <td>
-          <button class="removeEmployee>Remove</button>
-          </td>
+    
         </tbody>
       </table>
       `);
 
-      //empty form input
-      $('#first-name').val('');
-      $('#last-name').val('');
-      $('#id').val('');
-      $('#title').val('');
-      $('#annual-sal').val('');
-};
+  //empty form input
+  $("#first-name").val("");
+  $("#last-name").val("");
+  $("#id").val("");
+  $("#title").val("");
+  $("#annual-sal").val("");
+}
 
 $(document).ready(readyNow);
-
-
-
-
