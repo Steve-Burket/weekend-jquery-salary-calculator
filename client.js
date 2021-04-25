@@ -57,9 +57,23 @@ function readyNow() {
 
 // create function to add employees to employee info
 function addEmployee(firstName, lastName, id, title, annSal) {
-  $("#employee-list").append(`
-    <table>
-        <tbody>
+  // prevent user from leaving a field blank
+  // create variable to hold input values
+  // create loop through employeeInfor array
+  if (
+    firstName === "" ||
+    lastName === "" ||
+    id === "" ||
+    title === "" ||
+    annSal === ""
+  ) {
+    alert("Can not leave blank field!");
+  } else {
+    // loop through garage array
+    for (let employee of employeeInfo) {
+      // for each employee, create td value
+      $("#employee-list").append(
+        `<table>
             <tr>
             <th>First Name</th>
             <th>Last Name</th>
@@ -68,26 +82,27 @@ function addEmployee(firstName, lastName, id, title, annSal) {
             <th>Annual Salary</th>
           </tr>
           <tr>
-            <td>${firstName}</td>
-            <td>${lastName}</td>
-            <td>${id}</td>
-            <td>${title}</td>
-            <td>${annSal}</td>
+            <td>${employee.firstName}</td>
+            <td>${employee.lastName}</td>
+            <td>${employee.id}</td>
+            <td>${employee.title}</td>
+            <td>${employee.annSal}</td>
             <td colspan='2'>
             <button class="removeEmployee">Remove</button>
             </td>
           </tr>
-    
-        </tbody>
-      </table>
-      `);
-
-  //empty form input
-  $("#first-name").val("");
-  $("#last-name").val("");
-  $("#id").val("");
-  $("#title").val("");
-  $("#annual-sal").val("");
-}
+          </tbody>
+      </table>`
+      );
+      // empty inputs
+      $("#first-name").val("");
+      $("#last-name").val("");
+      $("#id").val("");
+      $("#title").val("");
+      $("annual-sal").val("");
+    } // end for of
+    return employeeInfo;
+  }
+};
 
 $(document).ready(readyNow);
