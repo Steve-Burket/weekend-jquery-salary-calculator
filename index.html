@@ -18,21 +18,32 @@
       <h2>Add Employee</h2>
 
       <div>
-        <input id="first-name" placeholder="First Name" />
-        <input id="last-name" placeholder="Last Name" />
-        <input id="id" placeholder="ID" />
-        <input id="title" placeholder="Title" />
-        <input id="annual-sal" placeholder="Annual Salary" />
-        <button id="submit-btn">Add Employee</button>
+        <input id="first-name" placeholder="First Name" required/>
+        <input id="last-name" placeholder="Last Name" required/>
+        <input id="id" placeholder="ID" required/>
+        <input id="title" placeholder="Title" required/>
+        <input type="number" id="annual-sal" placeholder="Annual Salary" required/>
+        <input type="button"  id="submit-btn" value="Add Employee"></input>
       </div>
 
       <h2>Employees</h2>
 
-      <table id="employee-list-out">
-        <tbody>
-          <tr id="employee-list"></tr>
+      <table>
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Annual Salary</th>
+            <th>Remove Employee</th>
+          </tr>
+        </thead>
+         <tbody id="employee-list">
+          <!-- My data table will be here -->
         </tbody>
       </table>
+
 
       <h3 id="total-monthly-out">Total Monthly: $</h3>
     </main>
