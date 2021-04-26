@@ -91,6 +91,7 @@ function calculateMonthlyCost() {
   // totalAnnSal.push(Number(annSal));
   for (let i = 0; i < employeeInfo.length; i++) {
     salary += Number(employeeInfo[i].annSal) / 12;
+    totalAnnSal.push(Math.round(salary));
   } // end for loop
 
   console.log(Math.round(salary));
@@ -98,11 +99,19 @@ function calculateMonthlyCost() {
   // make variable to hold total annual salary
   let total = $("#total-monthly-out");
 
-  // empty it 
+  // empty it
   // display it to the DOM
   total.empty();
-  total.append(Math.round(salary));
+  total.append("Total Monthly Cost: $", Math.round(salary));
   console.log(employeeInfo);
+
+  // alert if over budget by highlighting Total Monthly cost with red
+  // if it exceeds $20,000
+  if (salary >= 20000) {
+    $("#total-monthly-out").css("background-color", "red");
+    console.log('too expensive!');
+    
+  }
 
 }
 
