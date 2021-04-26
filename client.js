@@ -11,11 +11,11 @@
 // // make an array to hold employee info
 const employeeInfo = [
   {
-    firstName: "",
-    lastName: "",
-    id: "",
-    title: "",
-    annSal: "",
+    firstName: 'Steve',
+    lastName: 'Burket',
+    id: 1225,
+    title: 'student',
+    annSal: 0,
   },
 ];
 
@@ -33,11 +33,17 @@ function readyNow() {
     const annSal = $("#annual-sal").val();
     // call addEmployee function to append employee to the DOM
     addEmployee(firstName, lastName, id, title, annSal);
-
     employeeInfo.push({
-      firstName: '',
-    })
-  });
+      firstName: firstName,
+      lastName: lastName,
+      id: id,
+      title: title,
+      annSal: annSal,
+    });
+  
+  
+  }); 
+
 
 
   // // call calculateMonthlyCost
@@ -63,8 +69,8 @@ function readyNow() {
     let removeEmployeeBtn = $(event.target);
     removeEmployeeBtn.closest("tr").remove();
   });
-}
 
+}
 // create function to add employees to employee info
 function addEmployee(firstName, lastName, id, title, annSal) {
   $("#employee-list").append(
@@ -73,7 +79,7 @@ function addEmployee(firstName, lastName, id, title, annSal) {
             <td>${lastName}</td>
             <td>${id}</td>
             <td>${title}</td>
-            <td>${annSal}</td>
+            <td>$ ${annSal}</td>
             <td>
             <button class="removeEmployee">Remove</button>
             </td>
@@ -99,15 +105,17 @@ function calculateMonthlyCost(totalAnnSal) {
   let salary = 0;
   // totalAnnSal.push(Number(annSal));
   for (let i = 0; i < employeeInfo.length; i++) {
-    if (employeeInfo[i].annSal === 0) {
-      totalAnnSal.push(Number(salary));
-    }
+    salary += Number(employeeInfo[i].annSal) / 12;
   } // end for loop
+  console.log(Math.round(salary));
+  let total = $('#total-monthly-out');
+
+  total.empty();
+  total.append(Math.round(salary));
+  console.log(employeeInfo);
+  
+  
   // display it to the DOM
-  // clear the values before adding to DOM
-  $("#employee-list-out").empty();
-  $("#total-monthly-out").append(`Total Montly Cost: $ ${annSal}`);
-  return totalAnnSal;
 }
 
 $('document').ready(readyNow);
