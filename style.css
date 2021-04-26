@@ -44,6 +44,10 @@ th, td {
   color: black;
 }
 
+td {
+  background-color: white;
+}
+
 /* remove employee button */
 #employee-list, .removeEmployee{
   border: 1px solid black;
